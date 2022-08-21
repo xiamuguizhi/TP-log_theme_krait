@@ -1,0 +1,118 @@
+
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" href="__THEMES__/css/style.css?v=1.2.1"/>
+    <link href="https://cdnjs.loli.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>{php} $str = $_SERVER['REQUEST_URI']; if(strpos($str,'record')!==false){ $array=explode('/', $str);  echo "日期 - " .$array[2]; }else if(strpos($str,'author')!==false){ echo "作者"; }else{ if (empty($title)) $title ='404'; echo $title; } {/php} - {$site_name}{php}$str = $_SERVER['REQUEST_URI']; if(strpos($str,'/page/')!==false){ echo " - 第" . str_replace("/","",strrchr($str, "/")) . "页"; } {/php}</title>
+    <!--[if lt IE 9]>
+    <script src="//cdnjscn.b0.upaiyun.com/libs/html5shiv/r29/html5.min.js"></script>
+    <script src="//cdnjscn.b0.upaiyun.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+	<meta name="description" content=" {switch name=":request()->controller()" } {case value="Posts"} {notempty name="$list[0]->abstract"} {$list[0]->abstract} {else /} {:config('config.site_seo_description')} {/notempty} {/case} {default /} {:config('config.site_seo_description')} {/switch}" />
+	<meta name="keywords" content=" {switch name=":request()->controller()" } {case value="Posts"} {notempty name="tags"} {$tags[0]['tagname']} {else /} {:config('config.site_seo_keywords')} {/notempty} {/case} {default /} {:config('config.site_seo_keywords')} {/switch}" />
+	<meta name="generator" content="TP-Blog 1.1/17.10.30" />
+	<meta name="template" content="{:config('config.DEFAULT_THEME')}" />
+	<link rel="canonical" href="{php} $url = $_SERVER['REQUEST_URI'].""; if($url=='/'){ echo "https://qq.md/"; }else { $dz = "https://qq.md".$url; $dz = str_replace(['/index.php','.html'],'',$dz);  $dz = str_replace(['?page='],'page/',$dz); echo strtolower($dz); } {/php}" />	
+	<link rel="alternate" type="application/rss+xml" title="{$site_name} &raquo; RSS 2.0" href="{$site_host}/feed.xml" />
+	<link rel="sitemap" type="application/xml" title="Sitemap" href="{$site_host}/sitemap.xml" />	
+	<link rel="apple-touch-icon" sizes="180x180" href="__THEMES__/img/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="__THEMES__/img/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="__THEMES__/img/favicon-16x16.png">	
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.10.0-beta/dist/katex.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-beta/dist/katex.min.css" />
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.10.0-beta/dist/contrib/auto-render.min.js"></script> 
+	<link rel="stylesheet" href="__THEMES__/layui/css/layui.css?v=2.5.6">
+	<link rel="stylesheet" href="__THEMES__/css/style.min.css?v=1.1.2">
+	<script src="__THEMES__/js/jquery.min.js?v=3.1.1"></script>
+	<script src="__THEMES__/layui/layui.js?v=2.5.6"></script>
+	<script src="__THEMES__/js/main.js?v=2.4"></script>
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?5908dac28b3e0e7400f1b6e189d870f2";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+    </head>
+
+<body>
+<!--[if lt IE 8]>
+    <div class="browsehappy" role="dialog">当前网页 <strong>不支持</strong> 你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>.</div>
+<![endif]-->
+
+<!-- 小屏折叠 -->
+<span class="minilize-fold"><i class="fa fa-fw fa-bars"></i></span>
+<!-- 左侧导航 -->
+<div class="left-nav">
+    <!-- 主人信息 -->
+    <div class="blogger">
+        <div><img src="https://gravatar.q6q.cc/avatar/f405d80940c9a7bf2f98c660eb4a0382?s=64&d=mm&r=g" alt="logo"></div>
+        <p class="ellipse">叶开楗</p>
+    </div>
+    <!-- 搜索域 -->
+    <div class="search">
+        <div id="search">
+            <label for="s" class="sr-only">搜索关键字</label>
+            <input type="text" id="s" name="s" class="text" placeholder="搜索" autocomplete="off"/>
+            <button type="submit" class="submit btn" id="queryTable"><i class="fa fa-search"></i></button>
+        </div>
+		<script>
+		window.onload = function() {
+			var text = document.querySelector(".text");
+			var btn = document.querySelector(".btn");
+			 
+			btn.addEventListener("click", function() {
+				var inputValue = text.value; //获取输入的文本
+				if(inputValue == "") {
+					alert("请填入搜索词！");
+
+				}
+				else {
+				   
+					 window.location.href = "https://qq.md/act/" + inputValue;
+				}
+			}, false);
+		};
+		$("#search").bind("keydown",function(e){
+		　　// 兼容FF和IE和Opera
+		　　var theEvent = e || window.event;
+		　　var code = theEvent.keyCode || theEvent.which || theEvent.charCode;
+		　　 if (code == 13) {
+		　　//回车执行查询
+		　　$("#queryTable").click();
+		　　}
+		});	
+		</script>		
+    </div>
+    <!-- 导航 -->
+    <nav>
+        <ul class="nav">
+            <div class="ninja"></div>
+
+            {volist name=':Core::loadAction("Nav/getNav")' id="vo" key="k"}
+			<li class='{eq name="$title" value="$vo.label"}layui-this{/eq}'> 
+			<a href="{:url($vo.href)}" {if condition="$k eq 3"/}data-no-instant{/if} title="{$vo.label}"><i class="fa fa-fw {$vo.icon}"></i><span>{$vo.label}</span></a>
+			</li>
+			{/volist}
+			{if condition="(empty($Think.session.backend_author_sign.username) neq true)"}
+			<li class=''> 
+			<a href="{:url('index/loginout')}" class="js-loginout"  title="退出" data-toggle="tooltip" data-msg="您确定退出吗？"><i class="fa fa-fw fa-eraser"></i><span>退出</span></a>
+			</li>
+			{/if}			
+		
+   
+                    </ul>
+    </nav>
+</div>
+
+{include file="public/sidebar"/}	
+
+<!-- 右侧app -->

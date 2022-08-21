@@ -1,0 +1,58 @@
+
+<!-- 文章页 -->
+<div id="post">
+<style>.post-content {font-size:12px !important;} .post-content a {text-decoration: none !important;}</style>
+    <article class="post-card">
+        <p class="post-time">
+            <i class="fa fa-fw fa-clock-o"></i>
+            <time datetime="{$list[0]->datetime|smartDate}">发布: {$list[0]->datetime|smartDate}</time>
+            <span><i class="fa fa-fw fa-eye"></i>围观: {$list[0]->view}</span>
+        </p>
+        <h1 class="post-title" itemprop="name headline">{$list[0]->title}</h1>
+        <div id="post-toc" class="post-content markdown-body">            <div class="archives">
+                <div class="title-page">
+                    <p>目前共计 <em>{:Core::loadModel("Blog","frontend","logic")->getStatistics(["channel"=>'blog',"hide"=>'n'])}</em> 篇日志，共 <em>{:Core::loadModel("Comment","frontend","logic")->getStatistics(['display'=>1])}</em> 条评论，加油啊~</p>
+                </div>
+				<div class="text" itemprop="articleBody">
+                <ul class="layui-timeline">
+				{assign name="list" value=':Core::loadAction("Blog/archive",[["where"=>["channel"=>"blog","hide"=>"n"],"order"=>"datetime DESC"]])' id="vo"}
+				{$list}
+				</ul>
+				 </div>
+            </div></div>
+    </article>
+    <ul class="post-near clearfix">
+	
+	
+			{notempty name="listPre"}
+				<li><i class="fa fa-fw fa-angle-left"></i>
+				<a href="{:url('Posts/show',['alias'=>$listPre[0]->alias])}" title="{$listPre[0]->title}">{$listPre[0]->title}</a></li>
+				{/notempty}
+				{notempty name="listNext"}
+				<li>
+				<a href="{:url('Posts/show',['alias'=>$listNext[0]->alias])}"  title="{$listNext[0]->title}">{$listNext[0]->title}</a> 
+				<i class="fa fa-fw fa-angle-right"></i></li>
+				{else}
+								<li>
+				<a href="#"  title="没有了">无</a> 
+				<i class="fa fa-fw fa-angle-right"></i></li>
+				{/notempty}		
+		
+    </ul>
+
+    <div id="contentTree" class="contentTree-a">
+        <span class="asideOpe"><a href="/index/random.html" title="随机推荐"><i class="fa fa fa-refresh"></i></a></span>
+        <p>目录<span>Content</span></p>
+        <div id="toc"></div>
+    </div>
+    <div class="aside-mask"></div>
+
+    {include file="public/comments"/}
+
+</div><!-- end #app-->
+
+
+
+
+
+

@@ -1,0 +1,134 @@
+<style>
+.post-content:before {
+    content: unset !important;
+}
+</style>
+    <div id="content" class="container">
+	<div class="header">
+		<!-- 操作栏 -->
+
+			<ul class="admin clearfix">
+				<li><a class="elli"><i class="fa fa-fw fa-ellipsis-v"></i></a></li>
+
+				
+					<li><a target="_blank" href="https://qq.md/pages/start"><i class="fa fa-user fa-fw"></i></a></li>
+				
+				<li><a target="_blank" href="https://qq.md/feed.xml"><i class="fa fa-fw fa-rss"></i></a></li>
+			</ul>
+
+	</div>
+    <!-- 核心 -->
+    <div id="core" class="clearfix">
+		<!-- 文章区 -->
+		
+			
+	{if condition="empty($search.keyword) neq true"}
+	<ol class="page-navigator">
+	<h3 class="archive-title">正在查询:</strong> 关键字 {$search.keyword|default=''} 所得结果 </h3>
+	</ol> 
+	{else}
+			<div class="article-list">
+			<!-- top4 -->
+			<div class="top4 clearfix">
+	
+							<a class="article post-thumb-big" href="https://qq.md/posts/23" style="background-image:url(https://vkceyugu.cdn.bspapp.com/VKCEYUGU-2fa930c8-feec-4942-ac88-ba3781377bb0/87a6afc0-4186-4fe3-9202-f2a11d3550d4.png)">
+								<div class="mask"></div>
+								<h2 class="ellipse">俺家后山半日游
+								</h2>
+								<ul class="clearfix">
+									<li class="modify-time"></li>
+								</ul>
+								<div class="post-content ellipse">
+									听我妈说，有个人修了一条路直通半山腰。我一听就准备看看去！顺便玩玩哈！
+								</div>
+							</a>
+						
+							<a class="article post-thumb-small" href="https://qq.md/posts/24" style="background-image:url(https://vkceyugu.cdn.bspapp.com/VKCEYUGU-2fa930c8-feec-4942-ac88-ba3781377bb0/e78f0862-e1cb-4d1f-9ab5-7ad560ffc5c6.png)">
+								<div class="mask"></div>
+								<h2 class="ellipse">漳州龙海南太武
+								</h2>
+								<ul class="clearfix">
+									<li class="modify-time"></li>
+								</ul>
+								<div class="post-content">
+									爬山游记
+								</div>
+							</a>
+
+			</div>
+	{/if}
+	
+    <!-- 文章区 -->
+    <div class="article-list">
+        <!-- 普通文章 -->
+        <div class="common">
+            <ul class="article-strip xxxx" id="box">
+	                             <li class="strip-title">
+                                  <span class="title">标题</span>
+                                  <span class="time ellipse">时间</span>
+                                  <span class="words ellipse">观看次数</span>
+                                 <span class="category ellipse">分类</span>
+                             </li>
+		{empty name="list"}
+		<div class="post">
+         <h2 class="post-title">没有找到内容</h2>
+       </div>
+		{else/}
+		{volist name="list" id="vo"}
+
+
+                                    <li>
+								<span class="title ellipse">
+									<i class="fa fa-file"></i>
+									<a href="{:url('Posts/show',['alias'=>$vo.alias])}" title="{$vo.title}">{eq name="$vo.istop" value="1"}<span style="color:red">[顶置] </span>{/eq}{if condition="view_news($vo.datetime) eq true"}<span style="color:red">[新]</span>{/if}{$vo.title}</a>
+								</span>
+                        <span class="time ellipse"><time
+                                    datetime="{$vo.datetime|smartDate}">{$vo.datetime|smartDate}</time></span>
+                        <span class="words ellipse">围观 {$vo.view} 次</span>
+                        <span class="category ellipse"><a href="{:url('sort/index',['cid'=>$vo.cateid])}">{$vo.ctitle}</a></span>
+                    </li>
+
+
+{/volist}
+{/empty}				
+			
+			
+				
+                            </ul>
+							
+
+	{notempty name="list"}
+<ol class="page-navigator">
+{php} 
+
+
+$liebiao = str_replace(['<ul class="pagination">','</ul>',''],'',$list->render());
+$liebiao = str_replace(['active','<span>','</span>'],['current','<a href="#">','</a>'],$liebiao);
+$str = $_SERVER['REQUEST_URI'];
+
+    if(strpos($str,'act')!==false){
+	echo str_replace("/page/","?page=",$liebiao);
+
+    }else{
+	
+		echo $liebiao;
+    }
+
+{/php}
+</ol>  
+{/notempty}		
+			
+			</div>
+    
+	
+	
+	</div>
+
+
+<footer id="footer">
+                <p> Powered by <a target="_blank" href="https://crazyus.net/posts/tplog.html">TP-log</a><a target="_blank" href="https://qq.md/sitemap.xml" title="sitemap站点地图"><i class="fa fa-map-o" aria-hidden="true"></i>MAP</a></p>
+    Copyright © 2019 {:Core::loadAction("Setting/getSetting",['column'=>"site_name"])}, <a class="author" href="https://github.com/chenrrrrr/typecho-theme-Moz" target=_blank>theme Moz</a></footer><!-- end #footer -->
+
+</div><!-- end #core -->
+</div><!-- end #content -->
+</div><!-- end #app -->

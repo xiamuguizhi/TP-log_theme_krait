@@ -1,0 +1,38 @@
+
+</body>
+
+<!-- lib -->
+<script src="https://cdnjs.loli.net/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+<script src="__THEMES__/js/theme.min.js?v=1.0.1"></script>
+<script>
+    //targetAll
+
+    $(".markdown-body a").attr("target", "_blank");
+
+	if (screen.width < 560) {
+	 $(function(){
+		 $("#box").removeClass("xxxx");//根据id找到对应元素，然后删除你要删除的class名即可
+	 });
+	};
+	var upLoadClicktag = 0;
+
+	$(".comment-support").on("click",function () {
+
+		if(upLoadClicktag==0){
+
+			upLoadClicktag = 1;
+
+			setTimeout(function () { upLoadClicktag = 0 }, 300000);
+		}else{
+			alert('你系度做咩啊?');
+		}
+	});   
+    // 代码高亮
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+ <script>
+    jQuery(document).ready(function($){$('.post-content a').attr({ target:"_blank"})});		
+  </script>
+</html>

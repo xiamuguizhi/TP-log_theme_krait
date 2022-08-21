@@ -1,0 +1,64 @@
+<!-- 文章页 -->
+<div id="post">
+    <article class="post-card">
+        <p class="post-time">
+            <i class="fa fa-fw fa-clock-o"></i>
+            <time datetime="{$list[0]->datetime|smartDate}">发布: {$list[0]->datetime|smartDate}</time>
+            <span><i class="fa fa-fw fa-eye"></i>围观: {$list[0]->view}</span>
+            <span>分类: <a href="{:url('sort/index',['cid'=>$list[0]->cateid])}">{$list[0]->ctitle}</a></span>
+        </p>
+        <h1 class="post-title" itemprop="name headline">{$list[0]->title}</h1>
+        <div id="post-toc" class="post-content markdown-body text">{php}
+		
+		$tp= $Parsedown->text($list[0]->content);
+
+		echo str_replace("<img src=\"","<img class=\"lazy list-img\" src=\"https://vkceyugu.cdn.bspapp.com/VKCEYUGU-2fa930c8-feec-4942-ac88-ba3781377bb0/aa158be5-8a2a-4733-b04f-2609d30d8824.gif\" data-src=\"",$tp);
+
+
+		{/php}</div>
+				{notempty name="tags"}
+					<p class="tags"><span>#</span> 
+					{volist name='tags' id="vo" }<a href="{:url('tag/index',['tid'=>$vo.tagname])}">{$vo.tagname}</a>{/volist}</p>
+				{else /}
+				<p class="tags"><span>#</span>none</p>
+				{/notempty}       
+        <ul class="post-meta clearfix">
+            <li><span>最后更新于:{$list[0]->updatetime|upsmartDate}</span></li>
+        </ul>
+        <!-- 版权声明 -->
+        <section class="post-copyright">
+            <p class="author">作者: 叶开楗</p>
+            <p class="author">链接: <a href="{$dz|strtolower}">{$dz|strtolower}</a></p>
+            <p class="protocal">版权: 除特别声明,均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">BY-NC-SA
+                    4.0</a>许可协议,转载请表明出处</p>
+        </section>
+    </article>
+    <ul class="post-near clearfix">
+	
+	
+			{notempty name="listPre"}
+				<li><i class="fa fa-fw fa-angle-left"></i>
+				<a href="{:url('Posts/show',['alias'=>$listPre[0]->alias])}" title="{$listPre[0]->title}">{$listPre[0]->title}</a></li>
+				{/notempty}
+				{notempty name="listNext"}
+				<li>
+				<a href="{:url('Posts/show',['alias'=>$listNext[0]->alias])}"  title="{$listNext[0]->title}">{$listNext[0]->title}</a> 
+				<i class="fa fa-fw fa-angle-right"></i></li>
+				{else}
+								<li>
+				<a href="#"  title="没有了">无</a> 
+				<i class="fa fa-fw fa-angle-right"></i></li>
+				{/notempty}		
+		
+    </ul>
+
+    <div id="contentTree" class="contentTree-a">
+        <span class="asideOpe"><a href="/index/random.html" title="随机推荐"><i class="fa fa fa-refresh"></i></a></span>
+        <p>目录<span>Content</span></p>
+        <div id="toc"></div>
+    </div>
+    <div class="aside-mask"></div>
+
+    {include file="public/comments"/}
+
+</div><!-- end #app-->

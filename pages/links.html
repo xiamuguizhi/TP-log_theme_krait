@@ -1,0 +1,108 @@
+ 
+<!-- 文章页 -->
+<div id="post">
+    <article class="post-card">
+        <p class="post-time">
+            <i class="fa fa-fw fa-clock-o"></i>
+            <time datetime="{$list[0]->datetime|smartDate}">发布: {$list[0]->datetime|smartDate}</time>
+            <span><i class="fa fa-fw fa-eye"></i>围观: {$list[0]->view}</span>		
+        </p>
+        <h1 class="post-title" itemprop="name headline">{$list[0]->title}</h1>
+        <div id="post-toc" class="post-content markdown-body">{$list[0]->content|markdownpage}</div>
+	
+        <ul class="post-meta clearfix">
+            <li><span>最后更新于:{$list[0]->updatetime|upsmartDate}</span></li>
+        </ul>
+        <!-- 版权声明 -->
+        <section class="post-copyright">
+            <p class="author">作者: 叶开楗</p>
+            <p class="author">链接: <a href="{$dz|strtolower}">{$dz|strtolower}</a></p>
+            <p class="protocal">版权: 除特别声明,均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">BY-NC-SA
+                    4.0</a>许可协议,转载请表明出处</p>
+        </section>
+    </article>
+    <ul class="post-near clearfix">
+	
+	
+			{notempty name="listPre"}
+				<li><i class="fa fa-fw fa-angle-left"></i>
+				<a href="{:url('Posts/show',['alias'=>$listPre[0]->alias])}" title="{$listPre[0]->title}">{$listPre[0]->title}</a></li>
+				{/notempty}
+				{notempty name="listNext"}
+				<li>
+				<a href="{:url('Posts/show',['alias'=>$listNext[0]->alias])}"  title="{$listNext[0]->title}">{$listNext[0]->title}</a> 
+				<i class="fa fa-fw fa-angle-right"></i></li>
+				{else}
+								<li>
+				<a href="#"  title="没有了">无</a> 
+				<i class="fa fa-fw fa-angle-right"></i></li>
+				{/notempty}		
+		
+    </ul>
+
+    <div id="contentTree" class="contentTree-a">
+        <span class="asideOpe"><a href="/index/random.html" title="随机推荐"><i class="fa fa fa-refresh"></i></a></span>
+        <p>目录<span>Content</span></p>
+        <div id="toc"></div>
+    </div>
+    <div class="aside-mask"></div>
+
+
+ <div class="layui-col-md12 layui-col-lg12">					
+					<div class="title-article">
+						<h3>😘申请链接</h3>
+					</div>
+					<div class="text" itemprop="articleBody">
+						   <div id="md_content_2" class="md_content" style="min-height: 50px;">								
+								<div id="respond-post" class="respond">
+
+										<form method="post" action="{:url('Link/add')}" id="comment-form" role="form" class="js-ajax-form">
+										<div class="layui-form-item layui-row layui-col-space5">
+										<div class="layui-col-md4">
+										<input type="text" name="sitename" id="sitename" class="layui-input" placeholder="* 站点名称"  required />
+										</div>
+										<div class="layui-col-md4">
+										<input type="url" name="siteurl" id="siteurl" lay-verify="url" class="layui-input" placeholder="http://站点主页" required />
+										</div>
+										<div class="layui-col-md4">
+										<input type="url" name="sitepic" id="sitepic" lay-verify="url" class="layui-input" placeholder="站点图标"  required />
+										</div>
+										</div>
+										<div class="layui-form-item">
+										<textarea rows="5" cols="30" name="description" id="description" placeholder="站点描述" class="layui-textarea" required></textarea>
+										</div>
+
+										<div class="layui-inline">
+										<button type="button" class="layui-btn layui-btn-normal js-ajax">提交申请</button>
+										<input type="checkbox" id="saveme"  name="check"  ><label for="comment_mail_notify"> 我不是机器人</label> 
+										</div>
+										</form>
+									</div>
+								<ul class="bilibili-links" id="links">
+								{volist name=':Core::loadAction("Sortlink/getSort",[["where"=>[],"order"=>"taxis asc"]])' id="vo"}
+								<h4>{$vo.name}</h4>
+								{volist name=':Core::loadAction("Link/getFriendLink",[["where"=>["linksortid"=>$vo.id,"hide"=>1],"order"=>"taxis asc"]])' id="vv"}
+								<li class="list-item">
+										<a class="cover" href="{$vv.siteurl}" target="_blank" rel="nofollow" >
+											<img class="lazy" src="__THEMES__/img/loading.gif" data-src="{$vv.sitepic}" alt="{$vv.sitename}" >
+										</a>
+										<div class="content">
+											<span class="title">
+												{$vv.sitename}
+											</span>
+											<p class="desc">{$vv.description}</p>
+											<div class="fans-action">
+												<a class="fans-action-btn" href="{$vv.siteurl}" target="_blank" rel="nofollow">
+												<span class="fans-action-text">访问TA</span>
+												</a>
+											</div>
+										</div>
+									</li>
+								{/volist}
+								{/volist}
+								</ul>
+							</div>
+					</div>
+			</div>
+
+</div><!-- end #app-->

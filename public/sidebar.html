@@ -1,0 +1,116 @@
+<!-- 中间sidebar -->
+
+<div id="sidebar">
+    <span class="change-card"><i class="fa fa-angle-right"></i></span>
+    <!-- 一言 -->
+    <div class="flag">
+        <div>
+                            <h3 class="motto">记录每天日常生活琐事</h3>
+                    </div>
+    </div>
+    <div class="loop">
+
+        <section class="widget dynamic-widgets">
+            <p class="widget-title"><i class="fa fa-fw fa-star"></i>
+                <span>我的微语</span>
+            </p>
+            <ul class="dynamic-widget">
+                
+		{volist name=':Core::loadAction("Twitter/getObject",[
+                "order"     =>"date DESC", 
+                "limit"  =>6,
+				])' id="vo"}		
+
+
+    <li class="dynamics_list">
+        <div class="dynamic-author" itemprop="creator" itemscope="" itemtype="http://schema.org/Person">
+                <span itemprop="image"><img class="avatar" src="https://gravatar.q6q.cc/avatar/f405d80940c9a7bf2f98c660eb4a0382?s=64&d=mm&r=g"
+                                            alt="叶开楗" width="32" height="32"></span>
+            <cite class="fn" itemprop="name">叶开楗</cite>
+        </div>
+        <div class="dynamic-meta">
+            <a href="https://qq.md/t/t">
+                <time itemprop="dynamicTime">{$vo.date|upsmartDate}</time>
+            </a>
+        </div>		
+			<div class="dynamic-content text" itemprop="commentText"><p>{$vo.content|iSsmilies}</p>
+						{notempty name="$vo.img"}
+						{volist name=':Core::loadAction("Twitter/getImg",["tid"=>$vo.id])' id="v"}
+						<a target="_blank" href="{$v}" rel="external">
+						<img class="lazy list-img" src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-2fa930c8-feec-4942-ac88-ba3781377bb0/aa158be5-8a2a-4733-b04f-2609d30d8824.gif" data-src="{$v}" style="height: 80px;" title="点击查看原图" >
+						</a>
+						{/volist}
+						{/notempty}	
+						</div>
+    </li>
+
+		{/volist}
+		
+		
+
+
+<ol class="dynamics-page-navigator">
+<li class="current">
+<style>
+.dynamics-page-navigator li:first-of-type {
+    border-radius: 5px 5px 5px 5px !important;
+}
+</style>
+<a href="https://qq.md/t/t">查看全部</a>
+</li>
+</ol>            
+
+</ul>
+        </section>
+        <style>
+            .dynamic-widgets::-webkit-scrollbar {
+                width: 0;
+                height: 0;
+            }
+
+            .dynamic-widget {
+                padding: 1em 1.5em 4em 2em;
+            }
+        </style>
+		   <!-- 最新评论 -->
+		<section class="widget ">
+                <p class="widget-title"><i class="fa fa-commenting-o"></i><span>COMMENTS</span></p>
+                <ul class="widget-list">
+				
+			
+					{volist name=':Core::loadAction("Comment/getBlogCommentsList",["limit"=>8,"where"=>["display"=>["eq",1]]])' id="com"}
+				<li class="comment-info">
+
+								{if condition="$com.channel eq 'blog'"}
+								<a href="{:url('posts/show',['alias'=>$com.alias])}#comment-{$com.id}">			
+								{else /} 
+								<a href="{:url('pages/show',['alias'=>$com.alias])}#comment-{$com.id}">		
+								{/if}
+                                    <div> 
+                                        <span  style="float: left;border-radius:70%; overflow:hidden;"><img class="lazy"  src="__THEMES__/img/loading.gif" data-src="{$com.mail|getGravatar}" height="42" width="42"></span>
+                                        <span class="comment-time">{$com.date|smartDate}</span>
+                                    </div>
+                                    <p class="comment-content-text">{$com.comment|iSsmilies}</p>
+                                    <p><span>《{$com.title}》 </span></p>
+                                </a>
+                            </li>
+							
+					{/volist}		
+                </ul>
+            </section>
+        <!-- 分类 -->
+        <section class="widget cate-list">
+            <p class="widget-title"><i class="fa fa-leaf"></i><span>CATEGORY</span></p>
+ <ul class="widget-list">
+ 
+ 			{volist name="category" id="vo"}
+                <li class="category-level-0 category-parent"><a href="{:url('sort/index',['cid'=>$vo.id])}">{$vo.title}</a></li>
+			{/volist}
+
+
+</ul>
+			</section>
+
+    </div>
+</div><!-- end #sidebar -->
+<div id="app">

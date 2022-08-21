@@ -1,0 +1,194 @@
+
+<div class="comment-text layui-form">
+<div id="comments">
+{if condition="$list[0]->iscomment eq 1"}
+<div id="respond-post" class="respond">
+
+<h4 id="response"><i class="fa fa-comments-o" aria-hidden="true"></i> 吐槽啦~</h4>
+<br/>
+<form method="post" action="{:url('Comment/add')}" id="comment-form"  class="js-ajax-form" role="form">
+<div class="layui-form-item">
+<p class="comment-smilies">
+<a class="add-smily" data-action="addSmily" data-smilies=":再见:"> <img alt="heo-再见" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/再见.png" title="再见"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":呲牙笑:"> <img alt="heo-呲牙笑" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/呲牙笑.png" title="呲牙笑"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":微笑:"> <img alt="heo-微笑" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/微笑.png" title="微笑"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":亲亲:"> <img alt="heo-亲亲" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/亲亲.png" title="亲亲"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":愤怒:"> <img alt="heo-愤怒" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/愤怒.png" title="愤怒"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":惊吓:"> <img alt="heo-惊吓" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/惊吓.png" title="惊吓"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":尴尬:"> <img alt="heo-尴尬" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/尴尬.png" title="尴尬"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":捂嘴笑:"> <img alt="heo-捂嘴笑" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/捂嘴笑.png" title="捂嘴笑"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":捂脸:"> <img alt="heo-捂脸" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/捂脸.png" title="捂脸"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":生病:"> <img alt="heo-生病" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/生病.png" title="生病"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":绿帽:"> <img alt="heo-绿帽" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/绿帽.png" title="绿帽"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":鼓掌:"> <img alt="heo-鼓掌" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/鼓掌.png" title="鼓掌"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":抠鼻:"> <img alt="heo-抠鼻" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/抠鼻.png" title="抠鼻"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":感动:"> <img alt="heo-感动" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/感动.png" title="感动"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":吐血:"> <img alt="heo-吐血" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/吐血.png" title="吐血"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":鬼脸:"> <img alt="heo-鬼脸" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/鬼脸.png" title="鬼脸"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":擦汗:"> <img alt="heo-擦汗" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/擦汗.png" title="擦汗"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":惊讶:"> <img alt="heo-惊讶" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/惊讶.png" title="惊讶"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":恶心:"> <img alt="heo-恶心" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/恶心.png" title="恶心"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":禁言:"> <img alt="heo-禁言" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/禁言.png" title="禁言"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":睡觉:"> <img alt="heo-睡觉" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/睡觉.png" title="睡觉"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":笑哭:"> <img alt="heo-笑哭" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/笑哭.png" title="笑哭"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":思考:"> <img alt="heo-思考" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/思考.png" title="思考"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":疑问:"> <img alt="heo-疑问" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/疑问.png" title="疑问"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":奋斗:"> <img alt="heo-奋斗" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/奋斗.png" title="奋斗"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":耍酷:"> <img alt="heo-耍酷" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/耍酷.png" title="耍酷"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":吵架:"> <img alt="heo-吵架" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/吵架.png" title="吵架"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":眩晕:"> <img alt="heo-眩晕" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/眩晕.png" title="眩晕"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":哭泣:"> <img alt="heo-哭泣" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/哭泣.png" title="哭泣"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":开心:"> <img alt="heo-开心" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/开心.png" title="开心"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":害羞:"> <img alt="heo-害羞" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/害羞.png" title="害羞"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":喜欢:"> <img alt="heo-喜欢" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/喜欢.png" title="喜欢"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":烦恼:"> <img alt="heo-烦恼" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/烦恼.png" title="烦恼"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":爆炸:"> <img alt="heo-爆炸" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/爆炸.png" title="爆炸"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":熬夜:"> <img alt="heo-熬夜" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/熬夜.png" title="熬夜"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":吃瓜:"> <img alt="heo-吃瓜" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/吃瓜.png" title="吃瓜"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":阴险:"> <img alt="heo-阴险" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/阴险.png" title="阴险"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":狗头:"> <img alt="heo-狗头" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/狗头.png" title="狗头"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":滑稽:"> <img alt="heo-滑稽" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/滑稽.png" title="滑稽"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":被打:"> <img alt="heo-被打" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/被打.png" title="被打"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":哈士奇:"> <img alt="heo-哈士奇" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/哈士奇.png" title="哈士奇"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":大笑:"> <img alt="heo-大笑" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/大笑.png" title="大笑"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":加班:"> <img alt="heo-加班" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/加班.png" title="加班"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":唱歌:"> <img alt="heo-唱歌" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/唱歌.png" title="唱歌"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":纠结:"> <img alt="heo-纠结" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/纠结.png" title="纠结"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":发红包:"> <img alt="heo-发红包" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/发红包.png" title="发红包"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":送福:"> <img alt="heo-送福" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/送福.png" title="送福"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":牛年进宝:"> <img alt="heo-牛年进宝" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/牛年进宝.png" title="牛年进宝"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":狗头围脖:"> <img alt="heo-狗头围脖" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/狗头围脖.png" title="狗头围脖"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":狗头花:"> <img alt="heo-狗头花" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/狗头花.png" title="狗头花"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":狗头草:"> <img alt="heo-狗头草" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/狗头草.png" title="狗头草"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":头秃:"> <img alt="heo-头秃" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/头秃.png" title="头秃"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":狗头胖次:"> <img alt="heo-狗头胖次" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/狗头胖次.png" title="狗头胖次"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":我看好你:"> <img alt="heo-我看好你" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/我看好你.png" title="我看好你"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":好的:"> <img alt="heo-好的" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/好的.png" title="好的"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":好奇:"> <img alt="heo-好奇" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/好奇.png" title="好奇"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":偷偷看:"> <img alt="heo-偷偷看" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/偷偷看.png" title="偷偷看"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":危险:"> <img alt="heo-危险" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/危险.png" title="危险"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":小丑:"> <img alt="heo-小丑" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/小丑.png" title="小丑"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":引起不适:"> <img alt="heo-引起不适" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/引起不适.png" title="引起不适"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":滑稽喝水:"> <img alt="heo-滑稽喝水" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/滑稽喝水.png" title="滑稽喝水"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":熊猫:"> <img alt="heo-熊猫" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/熊猫.png" title="熊猫"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":熊猫唱歌:"> <img alt="heo-熊猫唱歌" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/熊猫唱歌.png" title="熊猫唱歌"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":打牌:"> <img alt="heo-打牌" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/打牌.png" title="打牌"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":哈士奇失去意识:"> <img alt="heo-哈士奇失去意识" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/哈士奇失去意识.png" title="哈士奇失去意识"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":应援:"> <img alt="heo-应援" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/应援.png" title="应援"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":熊猫喜欢:"> <img alt="heo-熊猫喜欢" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/熊猫喜欢.png" title="熊猫喜欢"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":疼痛:"> <img alt="heo-疼痛" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/疼痛.png" title="疼痛"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":勉强笑:"> <img alt="heo-勉强笑" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/勉强笑.png" title="勉强笑"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":看穿一切:"> <img alt="heo-看穿一切" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/看穿一切.png" title="看穿一切"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":滑稽狂汗:"> <img alt="heo-滑稽狂汗" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/滑稽狂汗.png" title="滑稽狂汗"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":不好意思:"> <img alt="heo-不好意思" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/不好意思.png" title="不好意思"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":菜狗:"> <img alt="heo-菜狗" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/菜狗.png" title="菜狗"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":难以置信:"> <img alt="heo-难以置信" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/难以置信.png" title="难以置信"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":滑稽被子:"> <img alt="heo-滑稽被子" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/滑稽被子.png" title="滑稽被子"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":月饼:"> <img alt="heo-月饼" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/月饼.png" title="月饼"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":倚墙笑:"> <img alt="heo-倚墙笑" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/倚墙笑.png" title="倚墙笑"> </a>
+<a class="add-smily" data-action="addSmily" data-smilies=":出家人:"> <img alt="heo-出家人" class="wp-smiley" src="https://cdn.jsdelivr.net/gh/zhheo/Sticker-Heo@main/Sticker-100/出家人.png" title="出家人"> </a>                   
+</p>
+<textarea rows="5" cols="30" name="comment" id="comment" style="font-size:1.2em;" placeholder="注意哦~ 评论后需要等待几秒呢，不要重复点击啦会出问题的啦~" class="layui-textarea" required></textarea>
+</div>
+{if condition="(empty($Think.session.backend_author_sign.username) neq true)"}
+{assign name="login" value=':Core::loadAction("User/getOneObject",["username"=>"$Think.session.backend_author_sign.username"])'}
+<input type="hidden" name="poster" value="{$login.nickname}">
+<input type="hidden" name="mail"  value='{$login.email}'>
+<input type="hidden" name="url"   	 value='{$login.url}'>
+{else/}
+<div class="layui-form-item layui-row layui-col-space5">
+<div class="layui-col-md4">
+<input type="text" name="poster" id="poster" class="layui-input" placeholder="* 怎么称呼" value='{:Cookie::get("cposter")}' required />
+</div>
+<div class="layui-col-md4">
+<input type="email" name="mail" id="mail" lay-verify="email" class="layui-input" placeholder="* 邮箱(放心~会保密~.~)" value='{:Cookie::get("cmail")}' required />
+</div>
+<div class="layui-col-md4">
+<input type="url" name="url" id="url" lay-verify="url" class="layui-input" placeholder="http://您的主页" value='{:Cookie::get("curl")}' />
+</div>
+</div>
+{/if} 
+<div class="layui-inline">
+<button type="button" class="layui-btn layui-btn-normal js-ajax-button">提交评论</button>
+<button id="cancel-comment-reply-link"  class="layui-btn layui-btn-danger" href="javascript:void(0);" rel="nofollow" style="display:none" onclick="return TpComment.cancelReply();">取消回复</button>
+
+<input type="checkbox" id="saveme"  name="check" {eq name="ccheck" value="1 "}checked{/eq}><label for="comment_mail_notify"> 我不是机器人</label>
+<input type="hidden" name="gid" value="{$gid}" id="gid">
+<input type="hidden" name="pid" value="0" id="pid">
+<input type="hidden" name="author" value="" id="author">
+</div>
+</form>
+</div>
+<br/>
+{/if}
+{notempty name="comments"}
+<h3>已有 {:Core::loadAction("Comment/getCountComments",['where'=>["gid"=>$gid,"display"=>1]],"frontend","logic")} 条评论</h3>
+<br/>
+<div class="pinglun">
+<ol class="comment-list">	
+{foreach  name="comments" id="vo" key="m"}
+			<li>
+			<div class="comment-body" id="comment-{$vo.id}">
+				{volist name=':Core::loadAction("Comment/getObject",["where"=>["mail"=>$vo.mail],"order" =>"date DESC", "limit"  =>1])' id="last"}
+				<div class="comment-user-img"   data-usesr="{$vo.poster}" data-os="{$vo.useragent|getOS}" data-browers="{$vo.useragent|getBR}" data-last="{$vo.date|smartDate}">
+				{/volist}
+					<img class="lazy" src="{$vo.mail|getGravatar}" >
+				</div>
+				<div class="comment-info">
+					<div class="comment-top">
+						<span class="comment-nickname"><a  href="{$vo.url}"  $nofollow target="_blank">{$vo.poster}</a></span>	
+						{$vo.mail|usermail}							
+						<span class="comment-time">{$vo.date|smartDate}</span>		
+						<span class="right">#{$vo.i}</span>
+					</div>
+					<div class="comment-content">
+						<div class="comment-content-text">
+							{$vo.comment|iSsmilies}
+						</div>
+					</div>
+					<div class="comment-footer">
+						<span class="reply" href="javascript:;" onclick="return TpComment.reply('comment-{$vo.id}',{$vo.id},'{$vo.poster}');">@回复</span>
+						<span class="comment-support pointer {:Core::loadAction("Comment/gethas",["id"=>$vo.id])}" onclick="dot_good({$vo.id},this)" data-id="{$vo.id}" data-herf="{:url('Comment/favorite')}"  id="likes-{$vo.id}" ><i class="czs-thumbs-up-l"></i>点赞&nbsp;<span class="count">{$vo.likes}</span>
+					</div></span>
+				</div>
+			</div>
+			{foreach   name="vo.children" id="v"   key="k"}			
+			<div class="comment-body-sub" id="comment-{$v.id}">
+				{volist name=':Core::loadAction("Comment/getObject",["where"=>["mail"=>$v.mail],"order" =>"date DESC", "limit"  =>1])' id="clast"}
+				<div class="comment-user-img"  data-usesr="{$v.poster}" data-os="{$v.useragent|getOS}" data-browers="{$v.useragent|getBR}" data-last="{$v.date|smartDate}">
+				{/volist}
+					<img class="lazy" src="{$v.mail|getGravatar}">
+				</div>
+				<div class="comment-info">
+					<div class="comment-top">
+						<span class="comment-nickname" id="{$v.poster}"><a  href="{$v.url}"  $nofollow target="_blank">{$v.poster}</a></span>
+						{$v.mail|usermail}	
+						<span class="comment-time">{$v.date|smartDate}</span>						
+						<span class="right">#{$vo.i}-{$vo->k--}</span>
+					</div>
+					<div class="comment-content">
+						<div class="comment-content-text">
+							{$v.comment|iSsmilies}
+						</div>
+					</div>
+					<div class="comment-footer">				
+						<span class="reply" onclick="return TpComment.reply('comment-{$v.id}',{$v.id},'{$v.poster}');">@回复</span>
+						<span class="comment-support pointer {:Core::loadAction("Comment/gethas",["id"=>$v.id])}" onclick="dot_good({$v.id},this)" data-id="{$v.id}" data-herf="{:url('Comment/favorite')}"  id="likes-{$v.id}"><i class="czs-thumbs-up-l"></i>点赞&nbsp;<span class="count">{$v.likes}</span></span>
+					</div>
+				</div>
+			</div>			
+			{/foreach}			
+			</li>
+			{/foreach}
+		{notempty name="comments"}
+		  <nav role="navigation">
+			{$comments->render()}
+		</nav>
+	{/notempty}	
+</ol>            
+</div>
+{/notempty}
+</div>
+</div>
+
+
